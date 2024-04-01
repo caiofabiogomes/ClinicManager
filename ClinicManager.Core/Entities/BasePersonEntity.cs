@@ -1,10 +1,5 @@
 ﻿using ClinicManager.Core.Enums;
 using ClinicManager.Core.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManager.Core.Entities
 {
@@ -15,16 +10,16 @@ namespace ClinicManager.Core.Entities
 
         }
 
-        public BasePersonEntity(string firstName, string lastName, DateTime dateOfBirth, string phoneNumber, string email, string cpf, EBloodType bloodType, string address)
+        public BasePersonEntity(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address)
         {
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;
-            PhoneNumber = new PhoneNumber();
-            Email = new Email();
-            Cpf = new Cpf();
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Cpf = Cpf;
             BloodType = bloodType;
-            Address = new Address();
+            Address = address;
         }
 
         public string FirstName { get; private set; }

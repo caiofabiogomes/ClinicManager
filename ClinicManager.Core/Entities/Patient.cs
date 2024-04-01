@@ -1,10 +1,5 @@
 ﻿using ClinicManager.Core.Enums;
 using ClinicManager.Core.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManager.Core.Entities
 {
@@ -15,7 +10,7 @@ namespace ClinicManager.Core.Entities
             
         }
 
-        public Patient(string firstName, string lastName, DateTime dateOfBirth, string phoneNumber, string email, string cpf, EBloodType bloodType, string address, double height, double weight) : base(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address)
+        public Patient(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address, double height, double weight) : base(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address)
         {
             Height = height;
             Weight = weight;

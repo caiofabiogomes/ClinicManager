@@ -1,12 +1,5 @@
 ﻿using ClinicManager.Core.Enums;
 using ClinicManager.Core.ValueObjects;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ClinicManager.Core.Entities
 {
@@ -17,10 +10,10 @@ namespace ClinicManager.Core.Entities
 
         }
 
-        public Doctor(string firstName, string lastName, DateTime dateOfBirth, string phoneNumber, string email, string cpf, EBloodType bloodType, string address, string specialty, string crm) : base(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address)
+        public Doctor(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, string specialty, Crm crm , Address address) : base(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType,address)
         {
             Specialty = specialty;
-            Crm = new Crm();
+            Crm = crm;
         }
 
         public string Specialty { get; private set; }
