@@ -20,6 +20,7 @@ namespace ClinicManager.Core.Entities
             Cpf = Cpf;
             BloodType = bloodType;
             Address = address;
+            MedicalAppointments = new List<MedicalAppointment>();
         }
 
         public string FirstName { get; private set; }
@@ -37,5 +38,7 @@ namespace ClinicManager.Core.Entities
         public EBloodType BloodType { get; private set; }
 
         public Address Address { get; private set; }
+
+        public List<MedicalAppointment> MedicalAppointments { get; private set; }
     }
 }

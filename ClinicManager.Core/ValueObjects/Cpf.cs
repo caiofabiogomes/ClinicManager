@@ -2,6 +2,10 @@
 {
     public record Cpf
     {
+        public Cpf()
+        {
+            
+        }
         public Cpf(string value)
         {
             if (!IsValid(value))

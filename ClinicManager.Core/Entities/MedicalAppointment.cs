@@ -22,9 +22,15 @@ namespace ClinicManager.Core.Entities
 
         public Guid PatientId { get; private set; }
 
+        public Patient Patient { get; private set; }
+
         public Guid DoctorId { get; private set; }
 
+        public Doctor Doctor { get; private set; }
+
         public Guid ServiceNoteId { get; private set; }
+
+        public ServiceNote ServiceNote { get; private set; }
 
         public string MedicalInsurance { get; private set; }
 

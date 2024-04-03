@@ -2,6 +2,10 @@
 {
     public record Email
     {
+        public Email()
+        {
+            
+        }
         public Email(string value)
         {
             if (!IsValid(value))

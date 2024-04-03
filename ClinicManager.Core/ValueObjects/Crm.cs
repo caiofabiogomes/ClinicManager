@@ -9,6 +9,10 @@ namespace ClinicManager.Core.ValueObjects
     //Testar
     public record Crm
     {
+        public Crm()
+        {
+            
+        }
         public Crm(string value)
         {
             if (!IsValid(value))

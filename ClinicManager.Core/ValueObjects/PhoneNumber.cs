@@ -2,6 +2,10 @@
 {
     public record PhoneNumber
     {
+        public PhoneNumber()
+        {
+            
+        }
         public PhoneNumber(string value)
         {
             if (!IsValid(value))

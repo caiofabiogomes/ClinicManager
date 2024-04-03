@@ -22,6 +22,6 @@
         public decimal Value { get; private set; }
 
         public int DurationTime { get; private set; }
-
+        public List<MedicalAppointment> MedicalAppointments { get; private set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClinicManager.Core.IRepositories;
 using ClinicManager.Infrastructure.Persistence;
 using ClinicManager.Infrastructure.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection; 
 namespace ClinicManager.Infrastructure
@@ -19,11 +20,10 @@ namespace ClinicManager.Infrastructure
         }
         private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            //configurar o banco de dados
-            //var connectionString = configuration.GetConnectionString("DevFreelaCs");
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
-            // services.AddDbContext<DevFreelaDbContext>(options => options.UseInMemoryDatabase("DevFreelaDb"));
+            services.AddDbContext<ClinicManagerDbContext>(options => options.UseNpgsql(connectionString));
+
             return services;
         }
         private static IServiceCollection AddRepositories(this IServiceCollection services)
