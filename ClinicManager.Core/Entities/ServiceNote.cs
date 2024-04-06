@@ -7,11 +7,11 @@
             
         }
 
-        public ServiceNote(string name, string description, decimal value, int durationTime)
+        public ServiceNote(string name, string description, decimal valueOfServiceNote, int durationTime)
         {
             Name = name;
             Description = description;
-            Value = value;
+            ValueOfServiceNote = valueOfServiceNote;
             DurationTime = durationTime;
         }
 
@@ -19,7 +19,7 @@
 
         public string Description { get; private set; }
 
-        public decimal Value { get; private set; }
+        public decimal ValueOfServiceNote { get; private set; }
 
         public int DurationTime { get; private set; }
         public List<MedicalAppointment> MedicalAppointments { get; private set; }

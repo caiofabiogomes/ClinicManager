@@ -1,6 +1,6 @@
 ﻿namespace ClinicManager.Core.ValueObjects
 {
-    public record Address
+    public sealed record Address
     {
         public Address()
         {

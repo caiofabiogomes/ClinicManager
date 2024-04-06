@@ -1,6 +1,6 @@
 ﻿using ClinicManager.Core.Entities;
+using ClinicManager.Infrastructure.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace ClinicManager.Infrastructure.Persistence
 {
@@ -16,7 +16,11 @@ namespace ClinicManager.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetEntryAssembly());
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new DoctorConfigurations());
+            modelBuilder.ApplyConfiguration(new PatientConfigurations());
+            modelBuilder.ApplyConfiguration(new MedicalAppointmentConfigurations());
+            modelBuilder.ApplyConfiguration(new ServiceNoteConfigurations());
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClinicManager.Core.ValueObjects
 {
     //Testar
-    public record Crm
+    public sealed record Crm
     {
         public Crm()
         {

@@ -12,35 +12,16 @@ namespace ClinicManager.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(p => p.Id);
 
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.Street)
-                .HasColumnName("Street")
-                .IsRequired(true);
 
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.City)
-                .HasColumnName("City")
-                .IsRequired(true);
-
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.State)
-                .HasColumnName("State")
-                .IsRequired(true);
-
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.ZipCode)
-                .HasColumnName("ZipCode")
-                .IsRequired(true);
-
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.HouseNumber)
-                .HasColumnName("HouseNumber")
-                .IsRequired(true);
-
-            builder.OwnsOne(x => x.Address)
-                .Property(x => x.HousingComplement)
-                .HasColumnName("HousingComplement")
-                .IsRequired(false);
+            builder.OwnsOne(x => x.Address, address =>
+            {
+                address.Property(x => x.Street).HasColumnName("Street").IsRequired(true);
+                address.Property(x => x.City).HasColumnName("City").IsRequired(true);
+                address.Property(x => x.State).HasColumnName("State").IsRequired(true);
+                address.Property(x => x.ZipCode).HasColumnName("ZipCode").IsRequired(true);
+                address.Property(x => x.HouseNumber).HasColumnName("HouseNumber").IsRequired(true);
+                address.Property(x => x.HousingComplement).HasColumnName("HousingComplement").IsRequired(false);
+            });
 
 
             builder.OwnsOne(x => x.PhoneNumber)

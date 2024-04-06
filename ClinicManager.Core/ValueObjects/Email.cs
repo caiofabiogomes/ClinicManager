@@ -1,6 +1,6 @@
 ﻿namespace ClinicManager.Core.ValueObjects
 {
-    public record Email
+    public sealed record Email
     {
         public Email()
         {

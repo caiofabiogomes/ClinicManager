@@ -17,7 +17,7 @@ namespace ClinicManager.Core.Entities
             DateOfBirth = dateOfBirth;
             PhoneNumber = phoneNumber;
             Email = email;
-            Cpf = Cpf;
+            Cpf = cpf;
             BloodType = bloodType;
             Address = address;
             MedicalAppointments = new List<MedicalAppointment>();

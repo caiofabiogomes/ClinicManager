@@ -1,6 +1,6 @@
 ﻿namespace ClinicManager.Core.ValueObjects
 {
-    public record PhoneNumber
+    public sealed record PhoneNumber
     {
         public PhoneNumber()
         {

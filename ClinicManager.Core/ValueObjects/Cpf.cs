@@ -1,6 +1,6 @@
 ﻿namespace ClinicManager.Core.ValueObjects
 {
-    public record Cpf
+    public sealed record Cpf
     {
         public Cpf()
         {
