@@ -13,6 +13,7 @@
             Description = description;
             ValueOfServiceNote = valueOfServiceNote;
             DurationTime = durationTime;
+            MedicalAppointments = new List<MedicalAppointment>();
         }
 
         public string Name { get; private set; }

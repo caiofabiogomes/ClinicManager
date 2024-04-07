@@ -8,6 +8,7 @@ namespace ClinicManager.Infrastructure.Persistence
     {
         public ClinicManagerDbContext(DbContextOptions<ClinicManagerDbContext> options) : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Patient> Patients { get; set; }
