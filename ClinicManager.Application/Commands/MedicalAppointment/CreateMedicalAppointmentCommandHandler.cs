@@ -14,7 +14,7 @@ namespace ClinicManager.Application.Commands.MedicalAppointment
         public async Task<Result<Guid>> Handle(CreateMedicalAppointmentCommand request, CancellationToken cancellationToken)
         { 
             var medicalAppointment = new Core.Entities.MedicalAppointment(request.PatientId, request.DoctorId, request.ServiceNoteId,request.MedicalInsurance,request.StartDate,request.EndDate,request.MedicalAppointmentType);
-
+            //validacoes
             await _unitOfWork.MedicalAppointments.AddAsync(medicalAppointment);
 
             await _unitOfWork.CompleteAsync();

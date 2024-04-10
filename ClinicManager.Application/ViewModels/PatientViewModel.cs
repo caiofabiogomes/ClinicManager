@@ -1,33 +1,10 @@
 ﻿using ClinicManager.Core.Enums;
 using ClinicManager.Core.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManager.Application.ViewModels
 {
     public class PatientViewModel
     {
-        public PatientViewModel(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, 
-            Email email, Cpf cpf, EBloodType bloodType, Address address, double height, 
-            double weight, Guid id, DateTime createdAt)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            DateOfBirth = dateOfBirth;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            Cpf = cpf;
-            BloodType = bloodType;
-            Address = address;
-            Height = height;
-            Weight = weight;
-            Id = id;
-            CreatedAt = createdAt;
-        }
-
         public string FirstName { get; private set; }
 
         public string LastName { get; private set; }

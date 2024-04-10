@@ -11,23 +11,6 @@ namespace ClinicManager.Application.ViewModels
 {
     public class DoctorViewModel
     {
-        public DoctorViewModel(Doctor doctor)
-        {
-            FirstName = doctor.FirstName;
-            LastName = doctor.LastName;
-            DateOfBirth = doctor.DateOfBirth;
-            PhoneNumber = doctor.PhoneNumber;
-            Email = doctor.Email;
-            Cpf = doctor.Cpf;
-            BloodType = doctor.BloodType;
-            Address = doctor.Address;
-            Specialty = doctor.Specialty;
-            Crm = doctor.Crm;
-            Id = doctor.Id;
-            CreatedAt = doctor.CreatedAt;
-            
-        }
-
         public string FirstName { get; private set; }
 
         public string LastName { get; private set; }

@@ -7,13 +7,22 @@ namespace ClinicManager.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         { 
-            services.AddAMediatR();
+            services
+                .AddAMediatR()
+                .AddAutoMapper();
 
             return services;
         }
         public static IServiceCollection AddAMediatR(this IServiceCollection services)
         {
             services.AddMediatR(typeof(ApplicationModule));
+
+            return services;
+        }
+
+        public static IServiceCollection AddAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(ApplicationModule));
 
             return services;
         }

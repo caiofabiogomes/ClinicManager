@@ -1,6 +1,6 @@
 ﻿using ClinicManager.Application.Commands.Doctor;
+using ClinicManager.Application.Queries.Doctor;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicManager.API.Controllers
@@ -22,7 +22,18 @@ namespace ClinicManager.API.Controllers
             if (!response.IsSuccess)
                 return StatusCode(500, response.Message);
 
-            return StatusCode(201, response.Message);
+            return StatusCode(201, response);
+        }
+
+        [HttpPost("GetAll")]
+        public async Task<IActionResult> GetAll(GetAllDoctorsQuery command)
+        {
+            var response = await _mediator.Send(command);
+
+            if (!response.IsSuccess)
+                return StatusCode(500, response.Message);
+
+            return StatusCode(201, response);
         }
     }
 }

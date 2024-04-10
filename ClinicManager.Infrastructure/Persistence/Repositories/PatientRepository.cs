@@ -1,5 +1,6 @@
 ﻿using ClinicManager.Core.Entities;
 using ClinicManager.Core.IRepositories;
+using ClinicManager.Core.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;
 
@@ -32,6 +33,20 @@ namespace ClinicManager.Infrastructure.Persistence.Repositories
         public async Task<Patient> GetByIdAsync(Guid id)
         {
             return await _context.Patients.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Patient> GetByCpfAsync(Cpf cpf)
+        {
+            var cpfToSearch = cpf.CleanCpf(cpf.Value);
+            
+            return await _context.Patients.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Cpf.CleanCpf(x.Cpf.Value) == cpfToSearch);
+        }
+
+        public async Task<Patient> GetByPhoneNumberAsync(PhoneNumber phoneNumber)
+        {
+            var phoneNumberToSearch = phoneNumber.CleanPhoneNumber(phoneNumber.Value);
+
+            return await _context.Patients.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Cpf.CleanCpf(x.Cpf.Value) == phoneNumberToSearch);
         }
     }
 }

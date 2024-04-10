@@ -63,5 +63,10 @@
                 return Value;
             }
         }
+
+        public string CleanPhoneNumber(string phoneNumber)
+        {
+            return new string(phoneNumber.Where(char.IsDigit).ToArray());
+        }
     }
 }

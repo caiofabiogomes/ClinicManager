@@ -1,4 +1,5 @@
 ﻿using ClinicManager.Core.Entities;
+using ClinicManager.Core.ValueObjects;
 
 namespace ClinicManager.Core.IRepositories
 {
@@ -7,6 +8,10 @@ namespace ClinicManager.Core.IRepositories
         Task<List<Patient>> GetAllAsync();
 
         Task<Patient> GetByIdAsync(Guid id);
+
+        Task<Patient> GetByCpfAsync(Cpf cpf);
+
+        Task<Patient> GetByPhoneNumberAsync(PhoneNumber phoneNumber);
 
         Task AddAsync(Patient patient);
 

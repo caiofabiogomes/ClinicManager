@@ -1,7 +1,6 @@
-﻿using ClinicManager.Application.Abstractions;
+﻿using AutoMapper;
+using ClinicManager.Application.Abstractions;
 using ClinicManager.Application.ViewModels;
-using ClinicManager.Core.Enums;
-using ClinicManager.Core.ValueObjects;
 using ClinicManager.Infrastructure.Persistence;
 using MediatR;
 
@@ -10,9 +9,12 @@ namespace ClinicManager.Application.Commands.Doctor
     public class CreateDoctorCommandHandler : IRequestHandler<CreateDoctorCommand, Result<DoctorViewModel>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CreateDoctorCommandHandler(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+
+        public CreateDoctorCommandHandler(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task<Result<DoctorViewModel>> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
@@ -23,7 +25,7 @@ namespace ClinicManager.Application.Commands.Doctor
 
             await _unitOfWork.CompleteAsync();
 
-            var result = new DoctorViewModel(doctor);
+            var result = _mapper.Map<DoctorViewModel>(doctor);
 
             return Result<DoctorViewModel>.Success(result, "Doctor created successfully");
         }

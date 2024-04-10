@@ -16,6 +16,7 @@ namespace ClinicManager.Application.Commands.MedicalAppointment
         public async Task<Result<Guid>> Handle(DeleteMedicalAppointmentCommand request, CancellationToken cancellationToken)
         {
             var medicalAppointment = await _unitOfWork.MedicalAppointments.GetByIdAsync(request.Id);
+            
             if (medicalAppointment == null)
                 return Result<Guid>.Failure("Consulta não encontrada.");
 
