@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ClinicManager.Application.Commands.ServiceNote
 {
-    public class CreateServiceNoteCommandHandler : IRequestHandler<CreateServiceNoteServiceCommand, Result<Guid>>
+    public class CreateServiceNoteCommandHandler : IRequestHandler<CreateServiceNoteCommand, Result<Guid>>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -13,7 +13,7 @@ namespace ClinicManager.Application.Commands.ServiceNote
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Result<Guid>> Handle(CreateServiceNoteServiceCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Guid>> Handle(CreateServiceNoteCommand request, CancellationToken cancellationToken)
         {
             var serviceNote = new Core.Entities.ServiceNote(request.Name, request.Description, request.ValueOfServiceNote, request.DurationTime);
 

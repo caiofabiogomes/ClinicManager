@@ -1,16 +1,11 @@
 ﻿using ClinicManager.Application.Abstractions;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManager.Application.Commands.ServiceNote
 {
-    public class CreateServiceNoteServiceCommand : IRequest<Result<Guid>>
+    public class CreateServiceNoteCommand : IRequest<Result<Guid>>
     {
-        public CreateServiceNoteServiceCommand(string name, string description, decimal valueOfServiceNote, int durationTime)
+        public CreateServiceNoteCommand(string name, string description, decimal valueOfServiceNote, int durationTime)
         {
             Name = name;
             Description = description;
