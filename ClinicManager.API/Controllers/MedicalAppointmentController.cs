@@ -38,8 +38,10 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetById(GetMedicAppointmentByIdQuery query) 
+        public async Task<IActionResult> GetById(Guid id) 
         {
+            var query = new GetMedicAppointmentByIdQuery(id);
+
             var response = await _mediator.Send(query);
 
             if(!response.IsSuccess)

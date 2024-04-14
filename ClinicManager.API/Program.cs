@@ -11,9 +11,9 @@ var configuration = builder.Configuration;
 // Add services to the container.
 builder.Services
     .AddInfrastructure(configuration)
-    .AddApplication();  
+    .AddApplication();
 
-builder.Services.AddControllers(options =>  options.Filters.Add(typeof(ValidationFilter)))
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateDoctorCommandValidator>());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

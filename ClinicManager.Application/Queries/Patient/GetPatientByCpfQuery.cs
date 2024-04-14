@@ -7,11 +7,11 @@ namespace ClinicManager.Application.Queries.Patient
 {
     public class GetPatientByCpfQuery : IRequest<Result<PatientViewModel>>
     {
-        public GetPatientByCpfQuery(Cpf cpf)
+        public GetPatientByCpfQuery(string cpf)
         {
             Cpf = cpf;
         }
 
-        public Cpf Cpf { get; private set; }
+        public string Cpf { get; private set; }
     } 
 }

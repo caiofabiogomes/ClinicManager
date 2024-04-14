@@ -2,5 +2,13 @@
 {
     public enum EBloodType
     {
+        APositive,
+        ANegative,
+        BPositive,
+        BNegative,
+        ABPositive,
+        ABNegative,
+        OPositive,
+        ONegative
     }
 }

@@ -27,8 +27,9 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByPhoneNumber")]
-        public async Task<IActionResult> GetByPhoneNumber(GetPatientByPhoneNumberQuery query)
+        public async Task<IActionResult> GetByPhoneNumber(string phoneNumber)
         {
+            var query = new GetPatientByPhoneNumberQuery(phoneNumber);
             var response = await _mediator.Send(query);
 
             if (!response.IsSuccess)
@@ -38,8 +39,11 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByCpf")]
-        public async Task<IActionResult> GetByCpf(GetPatientByCpfQuery query)
-        {
+        public async Task<IActionResult> GetByCpf(string cpf)
+        { 
+
+            var query = new GetPatientByCpfQuery(cpf);
+
             var response = await _mediator.Send(query);
 
             if (!response.IsSuccess)

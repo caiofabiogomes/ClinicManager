@@ -28,6 +28,16 @@ namespace ClinicManager.Infrastructure.Persistence.Repositories
             return await _context.MedicalAppointments.Where(x => !x.IsDeleted).ToListAsync();
         }
 
+        public async Task<List<MedicalAppointment>> GetAllAsyncByDate(DateTime date)
+        {
+            return await _context.MedicalAppointments
+                .Include(x => x.Patient)
+                .Include(x => x.Doctor)
+                .Where(x => !x.IsDeleted &&
+                x.StartDate.Date == date.Date)
+                .ToListAsync();
+        }
+
         public async Task<MedicalAppointment> GetByIdAsync(Guid id)
         {
             return await _context.MedicalAppointments.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Id == id);

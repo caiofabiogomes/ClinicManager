@@ -29,7 +29,7 @@ namespace ClinicManager.Application.Validators.MedicalAppointment
                 .NotEmpty().WithMessage("EndDate is required");
 
             RuleFor(x => x.MedicalAppointmentType)
-                .NotEmpty().WithMessage("MedicalAppointmentType is required");
+                .NotNull().WithMessage("MedicalAppointmentType is required");
         }
     }
 }

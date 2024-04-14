@@ -31,7 +31,7 @@ namespace ClinicManager.Application.Validators.Patient
                 .Must(BeValidCpf).WithMessage("Invalid CPF");
 
             RuleFor(x => x.BloodType)
-                .NotEmpty().WithMessage("Blood type is required");
+                .NotNull().WithMessage("Blood type is required");
 
             RuleFor(x => x.Height)
                 .NotEmpty().WithMessage("Height is required");

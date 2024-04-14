@@ -16,5 +16,7 @@ namespace ClinicManager.Core.IRepositories
         Task AddAsync(MedicalAppointment medicalAppointment);
 
         Task DeleteAsync(MedicalAppointment medicalAppointment);
+
+        Task<List<MedicalAppointment>> GetAllAsyncByDate(DateTime date);
     }
 }
