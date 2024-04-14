@@ -40,5 +40,17 @@ namespace ClinicManager.Core.Entities
         public Address Address { get; private set; }
 
         public List<MedicalAppointment> MedicalAppointments { get; private set; }
+
+        public void Update(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Cpf = cpf;
+            BloodType = bloodType;
+            Address = address;
+        }
     }
 }

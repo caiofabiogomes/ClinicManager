@@ -1,14 +1,17 @@
 ﻿using ClinicManager.Application.Commands.MedicalAppointment;
 using FluentValidation;
 
-namespace ClinicManager.Application.Validators
+namespace ClinicManager.Application.Validators.MedicalAppointment
 {
-    public class CreateMedicalAppointmentCommandValidator : AbstractValidator<CreateMedicalAppointmentCommand>
+    public class UpdateMedicalAppointmentCommandValidator : AbstractValidator<UpdateMedicalAppointmentCommand>
     {
-        public CreateMedicalAppointmentCommandValidator()
+        public UpdateMedicalAppointmentCommandValidator()
         {
+            RuleFor(x => x.Id)
+                .NotEmpty().Must(x => x != Guid.Empty).WithMessage("Id is required");
+
             RuleFor(x => x.DoctorId)
-                .NotEmpty().Must(x => x != Guid.Empty).WithMessage("DoctorId is required");
+               .NotEmpty().Must(x => x != Guid.Empty).WithMessage("DoctorId is required");
 
             RuleFor(x => x.PatientId)
                 .NotEmpty().Must(x => x != Guid.Empty).WithMessage("PatientId is required");

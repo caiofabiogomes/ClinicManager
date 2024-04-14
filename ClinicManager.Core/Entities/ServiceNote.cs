@@ -24,5 +24,13 @@
 
         public int DurationTime { get; private set; }
         public List<MedicalAppointment> MedicalAppointments { get; private set; }
+
+        public void Update(string name, string description, decimal valueOfServiceNote, int durationTime)
+        {
+            Name = name;
+            Description = description;
+            ValueOfServiceNote = valueOfServiceNote;
+            DurationTime = durationTime;
+        }
     }
 }

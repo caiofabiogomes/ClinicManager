@@ -1,14 +1,17 @@
 ﻿using ClinicManager.Application.Commands.Patient;
 using FluentValidation;
 
-namespace ClinicManager.Application.Validators
+namespace ClinicManager.Application.Validators.Patient
 {
-    public class CreatePatientCommandValidator : AbstractValidator<CreatePatientCommand>
+    public class UpdatePatientCommandValidator : AbstractValidator<UpdatePatientCommand>
     {
-        public CreatePatientCommandValidator()
+        public UpdatePatientCommandValidator()
         {
+            RuleFor(x => x.Id)
+                .NotEmpty().Must(x => x != Guid.Empty).WithMessage("Id is required");
+
             RuleFor(x => x.FirstName)
-                .NotEmpty().WithMessage("First name is required");
+               .NotEmpty().WithMessage("First name is required");
 
             RuleFor(x => x.LastName)
                 .NotEmpty().WithMessage("Last name is required");
@@ -28,14 +31,14 @@ namespace ClinicManager.Application.Validators
                 .Must(BeValidCpf).WithMessage("Invalid CPF");
 
             RuleFor(x => x.BloodType)
-                .NotEmpty().WithMessage("Blood type is required"); 
+                .NotEmpty().WithMessage("Blood type is required");
 
             RuleFor(x => x.Height)
                 .NotEmpty().WithMessage("Height is required");
 
             RuleFor(x => x.Weight)
                 .NotEmpty().WithMessage("Weight is required");
-            
+
             RuleFor(x => x.Address.City)
                 .NotEmpty().WithMessage("City is required");
 

@@ -1,7 +1,7 @@
 ﻿using ClinicManager.Application.Commands.ServiceNote;
 using FluentValidation;
 
-namespace ClinicManager.Application.Validators
+namespace ClinicManager.Application.Validators.ServiceNote
 {
     public class CreateServiceNoteCommandValidator : AbstractValidator<CreateServiceNoteCommand>
     {
@@ -20,7 +20,7 @@ namespace ClinicManager.Application.Validators
 
             RuleFor(x => x.Description)
                 .NotEmpty().WithMessage("Description is required");
-             
+
         }
     }
 }

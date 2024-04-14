@@ -39,5 +39,16 @@ namespace ClinicManager.Core.Entities
         public DateTime EndDate { get; private set; }
 
         public EMedicalAppointmentType MedicalAppointmentType { get; private set; }
+
+        public void Update(Guid patientId, Guid doctorId, Guid serviceNoteId, string medicalInsurance, DateTime startDate, DateTime endDate, EMedicalAppointmentType medicalAppointmentType)
+        {
+            PatientId = patientId;
+            DoctorId = doctorId;
+            ServiceNoteId = serviceNoteId;
+            MedicalInsurance = medicalInsurance;
+            StartDate = startDate;
+            EndDate = endDate;
+            MedicalAppointmentType = medicalAppointmentType;
+        }
     }
 }

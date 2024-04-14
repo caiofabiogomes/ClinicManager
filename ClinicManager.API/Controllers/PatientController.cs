@@ -58,5 +58,16 @@ namespace ClinicManager.API.Controllers
 
             return StatusCode(200, response);
         }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(UpdatePatientCommand command)
+        {
+            var response = await _mediator.Send(command);
+
+            if (!response.IsSuccess)
+                return StatusCode(500, response.Message);
+
+            return StatusCode(200, response);
+        }
     }
 }

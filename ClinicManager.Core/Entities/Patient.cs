@@ -19,5 +19,12 @@ namespace ClinicManager.Core.Entities
         public double Height { get;  private set; }
 
         public double Weight { get; private set; }
+
+        public void Update(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address, double height, double weight)
+        {
+            base.Update(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address);
+            Height = height;
+            Weight = weight;
+        }
     }
 }

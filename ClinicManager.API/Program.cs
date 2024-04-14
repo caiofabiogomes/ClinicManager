@@ -1,6 +1,6 @@
 using ClinicManager.API.Filters;
 using ClinicManager.Application;
-using ClinicManager.Application.Validators;
+using ClinicManager.Application.Validators.Doctor;
 using ClinicManager.Infrastructure;
 using FluentValidation.AspNetCore;
 

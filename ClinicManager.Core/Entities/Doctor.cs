@@ -19,5 +19,12 @@ namespace ClinicManager.Core.Entities
         public string Specialty { get; private set; }
 
         public Crm Crm { get; private set; }
+
+        public void Update(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, string specialty, Crm crm, Address address)
+        {
+            base.Update(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address);
+            Specialty = specialty;
+            Crm = crm;
+        }
     }
 }

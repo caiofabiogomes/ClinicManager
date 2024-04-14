@@ -1,11 +1,11 @@
-﻿using ClinicManager.Application.Commands.Doctor;
+﻿using ClinicManager.Application.Commands.Patient;
 using FluentValidation;
 
-namespace ClinicManager.Application.Validators
+namespace ClinicManager.Application.Validators.Patient
 {
-    public class CreateDoctorCommandValidator : AbstractValidator<CreateDoctorCommand>
+    public class CreatePatientCommandValidator : AbstractValidator<CreatePatientCommand>
     {
-        public CreateDoctorCommandValidator()
+        public CreatePatientCommandValidator()
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("First name is required");
@@ -30,11 +30,11 @@ namespace ClinicManager.Application.Validators
             RuleFor(x => x.BloodType)
                 .NotEmpty().WithMessage("Blood type is required");
 
-            RuleFor(x => x.Specialty)
-                .NotEmpty().WithMessage("Specialty is required");
+            RuleFor(x => x.Height)
+                .NotEmpty().WithMessage("Height is required");
 
-            RuleFor(x => x.Crm.Value)
-                .NotEmpty().WithMessage("CRM is required");
+            RuleFor(x => x.Weight)
+                .NotEmpty().WithMessage("Weight is required");
 
             RuleFor(x => x.Address.City)
                 .NotEmpty().WithMessage("City is required");
@@ -50,7 +50,6 @@ namespace ClinicManager.Application.Validators
 
             RuleFor(x => x.Address.ZipCode)
                 .NotEmpty().Must(BeValidZipCode).WithMessage("Invalid ZipCode");
-
         }
 
         private bool BeValidCpf(string cpf)
@@ -70,7 +69,5 @@ namespace ClinicManager.Application.Validators
 
             return isNumeric && zipCodeFormatted.Length == 8;
         }
-
-
     }
 }
