@@ -21,7 +21,7 @@ namespace ClinicManager.Application.Commands.ServiceNote
 
             await _unitOfWork.CompleteAsync();
 
-            return Result<Guid>.Success(serviceNote.Id,"Serviço criado com sucesso!");
+            return Result<Guid>.Success(serviceNote.Id);
         }
     }
 }

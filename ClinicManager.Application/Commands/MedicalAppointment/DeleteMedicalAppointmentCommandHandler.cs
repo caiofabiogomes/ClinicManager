@@ -18,12 +18,12 @@ namespace ClinicManager.Application.Commands.MedicalAppointment
             var medicalAppointment = await _unitOfWork.MedicalAppointments.GetByIdAsync(request.Id);
             
             if (medicalAppointment == null)
-                return Result<Guid>.Failure("Consulta não encontrada.");
+                return Result<Guid>.NotFound("Medical appointment not Found.");
 
             await _unitOfWork.MedicalAppointments.DeleteAsync(medicalAppointment);
             await _unitOfWork.CompleteAsync();
 
-            return Result<Guid>.Success(medicalAppointment.Id,"Consulta removida!");
+            return Result<Guid>.Success(medicalAppointment.Id);
         }
     }
 }

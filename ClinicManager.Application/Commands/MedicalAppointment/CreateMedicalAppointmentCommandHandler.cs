@@ -19,7 +19,7 @@ namespace ClinicManager.Application.Commands.MedicalAppointment
 
             await _unitOfWork.CompleteAsync();
 
-            return Result<Guid>.Success(medicalAppointment.Id,"Consulta criada com sucesso!");
+            return Result<Guid>.Success(medicalAppointment.Id);
 
         }
     }

@@ -27,7 +27,7 @@ namespace ClinicManager.Application.Commands.Patient
 
             var result =  _mapper.Map<PatientViewModel>(patient);
 
-            return Result<PatientViewModel>.Success(result,"Paciente criado com sucesso!");
+            return Result<PatientViewModel>.Success(result);
         }
     }
 }

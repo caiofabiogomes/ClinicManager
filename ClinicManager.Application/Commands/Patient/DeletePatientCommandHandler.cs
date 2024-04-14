@@ -25,7 +25,7 @@ namespace ClinicManager.Application.Commands.Patient
             var patient = await _unitOfWork.Patients.GetByIdAsync(request.Id);
 
             if (patient is null)
-                return Result<Guid>.NotFound("Paciente não encontrado.");
+                return Result<Guid>.NotFound("Patient not found.");
 
             await _unitOfWork.Patients.DeleteAsync(patient);
 

@@ -18,13 +18,13 @@ namespace ClinicManager.Application.Commands.ServiceNote
             var serviceNote = await _unitOfWork.ServiceNotes.GetByIdAsync(request.Id);
 
             if (serviceNote == null)
-                return Result<Guid>.Failure("Prontuário de serviço não encontrado.");
+                return Result<Guid>.Failure("Service note not found");
 
             await _unitOfWork.ServiceNotes.DeleteAsync(serviceNote);
 
             await _unitOfWork.CompleteAsync();
 
-            return Result<Guid>.Success(serviceNote.Id, "Prontuário de serviço excluído com sucesso.");
+            return Result<Guid>.Success(serviceNote.Id);
         }
     }
 }
