@@ -1,4 +1,5 @@
 ﻿using ClinicManager.Core.IRepositories;
+using ClinicManager.Infrastructure.ExternalServices.GoogleCalander;
 using ClinicManager.Infrastructure.Persistence;
 using ClinicManager.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,8 @@ namespace ClinicManager.Infrastructure
             services
                 .AddPersistence(configuration)
                 .AddRepositories()
-                .AddUnitOfWork();
+                .AddUnitOfWork()
+                .AddExternalServices();
                 //.AddAuthentication(configuration);
 
             return services;
@@ -64,6 +66,13 @@ namespace ClinicManager.Infrastructure
         private static IServiceCollection AddUnitOfWork(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddExternalServices(this IServiceCollection services)
+        {
+            services.AddScoped<ISendNotificationGoogleCalendar, SendNotificationGoogleCalander>();
 
             return services;
         }

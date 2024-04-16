@@ -34,7 +34,8 @@ namespace ClinicManager.Application.Validators.Doctor
                 .NotEmpty().WithMessage("Specialty is required");
 
             RuleFor(x => x.Crm.Value)
-                .NotEmpty().WithMessage("CRM is required");
+                .NotEmpty()
+                .Must(x => x.Length == 6 && x.All(char.IsDigit)).WithMessage("CRM is required");
 
             RuleFor(x => x.Address.City)
                 .NotEmpty().WithMessage("City is required");

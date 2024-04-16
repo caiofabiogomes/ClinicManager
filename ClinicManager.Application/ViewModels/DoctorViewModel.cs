@@ -11,6 +11,22 @@ namespace ClinicManager.Application.ViewModels
 {
     public class DoctorViewModel
     {
+        public DoctorViewModel(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address, string specialty, Crm crm, Guid id, DateTime createdAt)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Cpf = cpf;
+            BloodType = bloodType;
+            Address = address;
+            Specialty = specialty;
+            Crm = crm;
+            Id = id;
+            CreatedAt = createdAt;
+        }
+
         public string FirstName { get; private set; }
 
         public string LastName { get; private set; }

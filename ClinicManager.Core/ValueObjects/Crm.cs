@@ -28,25 +28,8 @@ namespace ClinicManager.Core.ValueObjects
             if (string.IsNullOrWhiteSpace(crm))
                 return false;
              
-            if (crm.Length < 7)
+            if (crm.Length != 6 && !crm.All(char.IsDigit))
                 return false;
-             
-            string[] parts = crm.Split('/');
-            if (parts.Length != 2)
-                return false;
-
-            string numbersPart = parts[0];
-            string statePart = parts[1];
-             
-            if (numbersPart.Length != 6 || !numbersPart.All(char.IsDigit))
-                return false;
-             
-            if (!statePart.StartsWith("CRM"))
-                return false;
-             
-            string state = statePart.Substring(3);  
-            if (!state.All(char.IsLetter))
-                return false; 
 
 
             return true;
