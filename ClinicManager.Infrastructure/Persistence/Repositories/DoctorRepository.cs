@@ -32,5 +32,10 @@ namespace ClinicManager.Infrastructure.Persistence.Repositories
         {
             return await _context.Doctors.Where(x => !x.IsDeleted).FirstOrDefaultAsync( x => x.Id == id);
         }
+
+        public async Task<Doctor> GetByEmailAndPasswordAsync(string email, string password) 
+        {
+            return await _context.Doctors.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Email.Value == email && x.Password == password);
+        }
     }
 }

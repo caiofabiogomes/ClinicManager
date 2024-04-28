@@ -48,5 +48,10 @@ namespace ClinicManager.Infrastructure.Persistence.Repositories
 
             return await _context.Patients.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Cpf.CleanCpf(x.Cpf.Value) == phoneNumberToSearch);
         }
+
+        public async Task<Patient> GetByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _context.Patients.Where(x => !x.IsDeleted).FirstOrDefaultAsync(x => x.Email.Value == email && x.Password == password);
+        }
     }
 }

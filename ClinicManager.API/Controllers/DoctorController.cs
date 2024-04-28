@@ -1,6 +1,7 @@
 ﻿using ClinicManager.Application.Commands.Doctor;
 using ClinicManager.Application.Queries.Doctor;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicManager.API.Controllers
@@ -26,6 +27,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetAll")]
+        [Authorize]
         public async Task<IActionResult> GetAll(GetAllDoctorsQuery query)
         {
             var response = await _mediator.Send(query);
@@ -35,8 +37,8 @@ namespace ClinicManager.API.Controllers
 
             return StatusCode(201, response);
         }
-
         [HttpGet("GetById")]
+        [Authorize]
         public async Task<IActionResult> GetById(Guid id)
         {
             var query = new GetDoctorByIdQuery(id);
@@ -50,6 +52,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpDelete("Delete")]
+        [Authorize(Roles = "doctor")]
         public async Task<IActionResult> Delete(DeleteDoctorCommand command)
         {
             var response = await _mediator.Send(command);
@@ -61,6 +64,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPut("Update")]
+        [Authorize(Roles = "doctor")]
         public async Task<IActionResult> Update(UpdateDoctorCommand command)
         {
             var response = await _mediator.Send(command);

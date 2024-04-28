@@ -1,6 +1,7 @@
 ﻿using ClinicManager.Application.Commands.Patient;
 using ClinicManager.Application.Queries.Patient;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicManager.API.Controllers
@@ -15,7 +16,7 @@ namespace ClinicManager.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("Post")]
+        [HttpPost("Post")] 
         public async Task<IActionResult> Post([FromBody] CreatePatientCommand command)
         {
             var response = await _mediator.Send(command);
@@ -27,6 +28,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByPhoneNumber")]
+        [Authorize(Roles = "patient")]
         public async Task<IActionResult> GetByPhoneNumber(string phoneNumber)
         {
             var query = new GetPatientByPhoneNumberQuery(phoneNumber);
@@ -39,6 +41,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByCpf")]
+        [Authorize(Roles = "patient")]
         public async Task<IActionResult> GetByCpf(string cpf)
         { 
 
@@ -53,6 +56,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpDelete("Delete")]
+        [Authorize(Roles = "patient")]
         public async Task<IActionResult> Delete(DeletePatientCommand command)
         {
             var response = await _mediator.Send(command);
@@ -64,6 +68,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPut("Update")]
+        [Authorize(Roles = "patient")]
         public async Task<IActionResult> Update(UpdatePatientCommand command)
         {
             var response = await _mediator.Send(command);

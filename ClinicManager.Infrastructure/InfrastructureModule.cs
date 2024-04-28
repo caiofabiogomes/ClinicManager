@@ -1,10 +1,15 @@
 ﻿using ClinicManager.Core.IRepositories;
+using ClinicManager.Core.IServices;
+using ClinicManager.Infrastructure.Auth;
 using ClinicManager.Infrastructure.ExternalServices.GoogleCalander;
 using ClinicManager.Infrastructure.Persistence;
 using ClinicManager.Infrastructure.Persistence.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace ClinicManager.Infrastructure
 {
     public static class InfrastructureModule
@@ -15,8 +20,8 @@ namespace ClinicManager.Infrastructure
                 .AddPersistence(configuration)
                 .AddRepositories()
                 .AddUnitOfWork()
-                .AddExternalServices();
-                //.AddAuthentication(configuration);
+                .AddExternalServices()
+                .AddAuthentication(configuration);
 
             return services;
         }
@@ -38,30 +43,32 @@ namespace ClinicManager.Infrastructure
             return services;
         }
 
-        //private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    services
-        //        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        //        .AddJwtBearer(options =>
-        //        {
-        //            options.TokenValidationParameters = new TokenValidationParameters
-        //            {
-        //                ValidateIssuer = true,
-        //                ValidateAudience = true,
-        //                ValidateLifetime = true,
-        //                ValidateIssuerSigningKey = true,
+        private static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            
 
-        //                ValidIssuer = configuration["Jwt:Issuer"],
-        //                ValidAudience = configuration["Jwt:Audience"],
-        //                IssuerSigningKey = new SymmetricSecurityKey
-        //                (Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
-        //            };
-        //        });
+            services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
 
-        //    services.AddScoped<IAuthService, AuthService>();
+                        ValidIssuer = configuration["Jwt:Issuer"],
+                        ValidAudience = configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey
+                        (Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                    };
+                });
 
-        //    return services;
-        //} 
+            services.AddScoped<IAuthService, AuthService>();
+
+            return services;
+        }
 
         private static IServiceCollection AddUnitOfWork(this IServiceCollection services)
         {

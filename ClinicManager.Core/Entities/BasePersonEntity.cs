@@ -10,13 +10,14 @@ namespace ClinicManager.Core.Entities
 
         }
 
-        public BasePersonEntity(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address)
+        public BasePersonEntity(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email,string password, Cpf cpf, EBloodType bloodType, Address address)
         {
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;
             PhoneNumber = phoneNumber;
             Email = email;
+            Password = password;
             Cpf = cpf;
             BloodType = bloodType;
             Address = address;
@@ -32,6 +33,8 @@ namespace ClinicManager.Core.Entities
         public PhoneNumber PhoneNumber { get; private set; }
 
         public Email Email { get; private set; }
+
+        public string Password { get; private set; }
 
         public Cpf Cpf { get; private set; }
 

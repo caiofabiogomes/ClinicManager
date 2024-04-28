@@ -17,5 +17,7 @@ namespace ClinicManager.Core.IRepositories
 
         Task DeleteAsync(Patient patient);
 
+        Task<Patient> GetByEmailAndPasswordAsync(string email, string password);
+
     }
 }

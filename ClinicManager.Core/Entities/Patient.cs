@@ -10,7 +10,7 @@ namespace ClinicManager.Core.Entities
             
         }
 
-        public Patient(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address, double height, double weight) : base(firstName, lastName, dateOfBirth, phoneNumber, email, cpf, bloodType, address)
+        public Patient(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email,string password, Cpf cpf, EBloodType bloodType, Address address, double height, double weight) : base(firstName, lastName, dateOfBirth, phoneNumber, email,password, cpf, bloodType, address)
         {
             Height = height;
             Weight = weight;

@@ -1,6 +1,7 @@
 ﻿using ClinicManager.Application.Commands.MedicalAppointment;
 using ClinicManager.Application.Queries.MedicalAppointment;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicManager.API.Controllers
@@ -16,6 +17,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody] CreateMedicalAppointmentCommand command)
         {
             var response = await _mediator.Send(command);
@@ -27,6 +29,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetAll")]
+        [Authorize]
         public async Task<IActionResult> GetAll(GetAllMedicalAppointmentsQuery query) 
         {
             var response = await _mediator.Send(query);
@@ -38,6 +41,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetById")]
+        [Authorize]
         public async Task<IActionResult> GetById(Guid id) 
         {
             var query = new GetMedicAppointmentByIdQuery(id);
@@ -51,6 +55,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpDelete("Delete")]
+        [Authorize]
         public async Task<IActionResult> Delete(DeleteMedicalAppointmentCommand command)
         {
             var response = await _mediator.Send(command);
@@ -62,6 +67,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPut("Update")]
+        [Authorize]
         public async Task<IActionResult> Update(UpdateMedicalAppointmentCommand command) 
         {
             var response = await _mediator.Send(command);

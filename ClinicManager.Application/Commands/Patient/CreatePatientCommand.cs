@@ -8,13 +8,14 @@ namespace ClinicManager.Application.Commands.Patient
 {
     public class CreatePatientCommand : IRequest<Result<PatientViewModel>>
     {
-        public CreatePatientCommand(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email, Cpf cpf, EBloodType bloodType, Address address, double height, double weight)
+        public CreatePatientCommand(string firstName, string lastName, DateTime dateOfBirth, PhoneNumber phoneNumber, Email email,string password, Cpf cpf, EBloodType bloodType, Address address, double height, double weight)
         {
             FirstName = firstName;
             LastName = lastName;
             DateOfBirth = dateOfBirth;
             PhoneNumber = phoneNumber;
             Email = email;
+            Password = password;
             Cpf = cpf;
             BloodType = bloodType;
             Address = address;
@@ -31,6 +32,8 @@ namespace ClinicManager.Application.Commands.Patient
         public PhoneNumber PhoneNumber { get; private set; }
 
         public Email Email { get; private set; }
+
+        public string Password { get; private set; }
 
         public Cpf Cpf { get; private set; }
 
