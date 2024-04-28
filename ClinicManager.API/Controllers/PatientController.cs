@@ -58,8 +58,10 @@ namespace ClinicManager.API.Controllers
 
         [HttpDelete("Delete")]
         [Authorize(Roles = nameof(ERoleEnum.Patient))]
-        public async Task<IActionResult> Delete(DeletePatientCommand command)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            var command = new DeletePatientCommand(id);
+
             var response = await _mediator.Send(command);
 
             if (!response.IsSuccess)

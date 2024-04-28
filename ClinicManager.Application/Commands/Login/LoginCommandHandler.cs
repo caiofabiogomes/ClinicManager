@@ -29,23 +29,19 @@ namespace ClinicManager.Application.Commands.Login
         {
             var passwordHash = _authService.ComputeSha256Hash(request.Password);
 
-            Core.Entities.BasePersonEntity user = await _patientRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
-             
-            var role = nameof(ERoleEnum.Patient);
-
-
-            if (user == null) 
-            {
+            Core.Entities.BasePersonEntity user; 
+              
+            if(request.Role == ERoleEnum.Doctor)
                 user = await _doctorRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
-                role = nameof(ERoleEnum.Doctor);
-            }
+            else
+                user = await _patientRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
 
             if (user is null)
                 return Result<LoginViewModel>.NotFound("Email ou senha inválidos."); 
 
-            var token = _authService.GenerateJwtToken(user.Id,role);
+            var token = _authService.GenerateJwtToken(user.Id, request.Role.ToString());
 
-            var viewModel = new LoginViewModel(user.Id, token, role);
+            var viewModel = new LoginViewModel(user.Id, token, request.Role.ToString());
 
             return Result<LoginViewModel>.Success(viewModel, "Login realizado com sucesso!");
         }
