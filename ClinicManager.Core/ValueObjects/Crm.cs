@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClinicManager.Core.ValueObjects
+﻿namespace ClinicManager.Core.ValueObjects
 {
-    //Testar
     public sealed record Crm
     {
         public Crm()
