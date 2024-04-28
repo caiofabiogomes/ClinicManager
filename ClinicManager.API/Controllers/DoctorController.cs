@@ -1,5 +1,6 @@
 ﻿using ClinicManager.Application.Commands.Doctor;
 using ClinicManager.Application.Queries.Doctor;
+using ClinicManager.Core.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace ClinicManager.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("Post")] 
+        [HttpPost("Post")]
         public async Task<IActionResult> Post([FromBody] CreateDoctorCommand command)
         {
             var response = await _mediator.Send(command);
@@ -52,7 +53,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpDelete("Delete")]
-        [Authorize(Roles = "doctor")]
+        [Authorize(Roles = nameof(ERoleEnum.Doctor))]
         public async Task<IActionResult> Delete(DeleteDoctorCommand command)
         {
             var response = await _mediator.Send(command);
@@ -64,7 +65,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPut("Update")]
-        [Authorize(Roles = "doctor")]
+        [Authorize(Roles = nameof(ERoleEnum.Doctor))]
         public async Task<IActionResult> Update(UpdateDoctorCommand command)
         {
             var response = await _mediator.Send(command);

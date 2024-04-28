@@ -1,7 +1,6 @@
 ﻿using ClinicManager.Core.Entities;
 using ClinicManager.Core.IRepositories;
 using ClinicManager.Infrastructure.ExternalServices.GoogleCalander;
-using ClinicManager.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

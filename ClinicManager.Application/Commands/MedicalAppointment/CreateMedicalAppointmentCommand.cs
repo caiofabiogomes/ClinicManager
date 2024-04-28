@@ -1,5 +1,4 @@
 ﻿using ClinicManager.Application.Abstractions;
-using ClinicManager.Core.Entities;
 using ClinicManager.Core.Enums;
 using MediatR;
 

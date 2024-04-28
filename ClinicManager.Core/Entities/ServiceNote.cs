@@ -23,6 +23,7 @@
         public decimal ValueOfServiceNote { get; private set; }
 
         public int DurationTime { get; private set; }
+
         public List<MedicalAppointment> MedicalAppointments { get; private set; }
 
         public void Update(string name, string description, decimal valueOfServiceNote, int durationTime)

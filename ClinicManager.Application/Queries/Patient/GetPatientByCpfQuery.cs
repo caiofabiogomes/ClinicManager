@@ -1,6 +1,5 @@
 ﻿using ClinicManager.Application.Abstractions;
 using ClinicManager.Application.ViewModels;
-using ClinicManager.Core.ValueObjects;
 using MediatR;
 
 namespace ClinicManager.Application.Queries.Patient

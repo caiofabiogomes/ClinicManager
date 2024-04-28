@@ -1,5 +1,6 @@
 ﻿using ClinicManager.Application.Commands.Patient;
 using ClinicManager.Application.Queries.Patient;
+using ClinicManager.Core.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByPhoneNumber")]
-        [Authorize(Roles = "patient")]
+        [Authorize(Roles = nameof(ERoleEnum.Patient))]
         public async Task<IActionResult> GetByPhoneNumber(string phoneNumber)
         {
             var query = new GetPatientByPhoneNumberQuery(phoneNumber);
@@ -41,7 +42,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpGet("GetByCpf")]
-        [Authorize(Roles = "patient")]
+        [Authorize(Roles = nameof(ERoleEnum.Patient))]
         public async Task<IActionResult> GetByCpf(string cpf)
         { 
 
@@ -56,7 +57,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpDelete("Delete")]
-        [Authorize(Roles = "patient")]
+        [Authorize(Roles = nameof(ERoleEnum.Patient))]
         public async Task<IActionResult> Delete(DeletePatientCommand command)
         {
             var response = await _mediator.Send(command);
@@ -68,7 +69,7 @@ namespace ClinicManager.API.Controllers
         }
 
         [HttpPut("Update")]
-        [Authorize(Roles = "patient")]
+        [Authorize(Roles = nameof(ERoleEnum.Patient))]
         public async Task<IActionResult> Update(UpdatePatientCommand command)
         {
             var response = await _mediator.Send(command);

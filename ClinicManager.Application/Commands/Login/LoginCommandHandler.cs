@@ -1,5 +1,6 @@
 ﻿using ClinicManager.Application.Abstractions;
 using ClinicManager.Application.ViewModels;
+using ClinicManager.Core.Enums;
 using ClinicManager.Core.IRepositories;
 using ClinicManager.Core.IServices;
 using MediatR;
@@ -30,13 +31,13 @@ namespace ClinicManager.Application.Commands.Login
 
             Core.Entities.BasePersonEntity user = await _patientRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
              
-            var role = "patient";
+            var role = nameof(ERoleEnum.Patient);
 
 
             if (user == null) 
             {
                 user = await _doctorRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
-                role = "doctor";
+                role = nameof(ERoleEnum.Doctor);
             }
 
             if (user is null)

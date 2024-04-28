@@ -21,7 +21,7 @@ namespace ClinicManager.API.Controllers
             var loginUserviewModel = await _mediator.Send(command);
 
             if (!loginUserviewModel.IsFound)
-                return BadRequest("Email ou senha incorretos!");
+                return BadRequest("Email or password incorrects!");
 
             return Ok(loginUserviewModel); 
         }

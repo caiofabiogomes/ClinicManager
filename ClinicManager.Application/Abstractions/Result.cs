@@ -15,17 +15,17 @@
             Data = data;
         }
 
-        public static Result<T> Success(T data, string message = "Operação bem-sucedida.")
+        public static Result<T> Success(T data, string message = "Sucess.")
         {
             return new Result<T>(true, message, data: data);
         }
 
-        public static Result<T> Failure(string message = "Operação falhou.")
+        public static Result<T> Failure(string message = "Failure.")
         {
             return new Result<T>(false, message);
         }
 
-        public static Result<T> NotFound(string message = "não encontrado.")
+        public static Result<T> NotFound(string message = "Not Found.")
         {
             return new Result<T>(false, message, false);
         }
